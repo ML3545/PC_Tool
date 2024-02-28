@@ -1,6 +1,7 @@
 import subprocess
 from Main import *
 
+
 def install_chrome():
     # Command to install Chrome with Winget
     command = ["winget", "install", "--id", "Google.Chrome"]
@@ -23,6 +24,10 @@ def install_vlc():
         print(f"Error: {e}")
 
 
-def download_click(v):
-    if v.get() == 1:
-        print("Yes")
+# checkbox value
+def print_checkbox_status(checkboxes, checkbox_var):
+    for checkbox, package_name in checkboxes.items():
+        if checkbox_var[package_name].get() == 1:
+            print(f"{package_name} is selected")
+        else:
+            print(f"{package_name} is not selected")
