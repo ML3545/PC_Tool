@@ -13,7 +13,7 @@ def install_chrome():
 
 def install_vlc():
     # Command to install vlc with Winget
-    command = ["winget", "install", "-e", "--force", "--id", "VideoLAN.VLC"]
+    command = ["winget", "install", "-e", "--id", "VideoLAN.VLC"]
 
     # Execute the command
     try:
@@ -26,9 +26,9 @@ def install_vlc():
 def print_checkbox_status(checkboxes, checkbox_var):
     for checkbox, package_name in checkboxes.items():
         if checkbox_var[package_name].get() == 1:
-            if checkbox_var[package_name]:
+            if str(checkbox_var[package_name]) == "PY_VAR0":
                 install_chrome()
-            else:
+            elif str(checkbox_var[package_name]) == "PY_VAR1":
                 install_vlc()
         else:
             print(f"{package_name} is not selected")
