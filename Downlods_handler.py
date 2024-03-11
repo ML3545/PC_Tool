@@ -31,4 +31,4 @@ def print_checkbox_status(checkboxes, checkbox_var):
             elif str(checkbox_var[package_name]) == "PY_VAR1":
                 install_vlc()
         else:
-            print(f"{package_name} is not selected")
+            print("Nothing is selected selected")

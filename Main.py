@@ -1,12 +1,11 @@
 import tkinter as tk
 
 from Downlods_handler import print_checkbox_status
+from win_settings_handler import apply_settings
 
 checkboxes = {}
 checkbox_var = {}
 
-# def apply_settings():
-#     storage_sense =
 
 def create_GUI():
     root = tk.Tk()
@@ -39,10 +38,11 @@ def downloads(root):
     btn_install.pack()
 
 
-# def settings(root):
-#     #Settings
-#     btn_enable_settings = tk.Button(root, text="Enable Settings", command=apply_settings)
-#     btn_enable_settings.pack(anchor=tk.W)
+def settings(root):
+    # Settings
+    btn_enable_settings = tk.Button(root, text="Enable Settings", command=apply_settings)
+    btn_enable_settings.pack(anchor=tk.W)
+
 
 def main():
     create_GUI()
