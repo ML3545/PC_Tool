@@ -9,6 +9,7 @@ def apply_settings():
         New-Item -Path $key -Force | Out-Null
     }
     Set-ItemProperty -Path $key -Name "01" -Value 1 -Type DWord -Force
+    Set-ItemProperty -Path $key -Name "2048" -Value 30 -Type DWord -Force # Set for 30 Days 
     """
 
     # Run the PowerShell command
