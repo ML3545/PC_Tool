@@ -11,7 +11,7 @@ def create_GUI():
     root = tk.Tk()
     root.title("MEIR PC Tool")
     downloads(root)
-    # settings(root)
+    settings(root)
     root.mainloop()
     # root.geometry('600x600')
     # frm = ttk.Frame(root)
@@ -39,7 +39,6 @@ def downloads(root):
 
 
 def settings(root):
-    # Settings
     btn_enable_settings = tk.Button(root, text="Enable Settings", command=apply_settings)
     btn_enable_settings.pack(anchor=tk.W)
 
