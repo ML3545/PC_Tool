@@ -4,7 +4,9 @@ import subprocess
 def check_software_installed(software_name):
     command = f'powershell.exe Get-Package -Name "*{software_name}*"'
     process = subprocess.Popen(command.split(" "), stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+    process.communicate()
     return process.returncode
+
 
 # chrome
 def install_chrome():
