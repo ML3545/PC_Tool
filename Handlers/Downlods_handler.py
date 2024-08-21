@@ -2,28 +2,9 @@ import subprocess
 
 # check software list
 def check_software_installed(software_name):
-    command = f"Get-WmiObject -Query \"SELECT * FROM Win32_Product WHERE Name='{software_name}'\""
-    result = subprocess.run(command)
-    if software_name in result.stdout:
-        print(f"{software_name} is installed.")
-    else:
-        print(f"{software_name} is not installed.")
-
-    # PowerShell command to search for the specific software package
-    # command = f'powershell.exe Get-Package -Name "*{software_name}*"'
-    # process = subprocess.Popen(command.split(" "), stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-    # output, error = process.communicate()
-    #
-    # # Print the output
-    # print("Output:\n", output.decode())
-    # print("Error:\n", error.decode())
-
-    # command = f'wmic product where "name like \'%{software_name}%\'" get name'
-    # output = subprocess.run(command)
-    # print(output)
-    # if output.returncode != 0:
-    #     print(software_name)
-    # return False
+    command = f'powershell.exe Get-Package -Name "*{software_name}*"'
+    process = subprocess.Popen(command.split(" "), stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+    return process.returncode
 
 # chrome
 def install_chrome():

@@ -26,17 +26,17 @@ def downloads(root):
     # cb_vlc = ttk.Checkbutton(frm, text="VLC Pleyar").grid(column=0, row=1, padx=10, pady=3)
 
     # Create checkboxes
-    packages = ["Google Chrome", "VLC Media Player"]  # Add your package names here
+    packages = ["Google Chrome", "VLC Media Player", "Firefox"]  # Add your package names here
     for package_name in packages:
         var = tk.IntVar(value=0)
         checkbox_var[package_name] = var
         checkbox = tk.Checkbutton(root, text=package_name, variable=var)
         checkboxes[checkbox] = package_name
         checkbox.pack(anchor=tk.W)
-        check_software_installed(package_name)
-        # check_software_installed(package_name)
-        # if package_name:
-        #     tk.Checkbutton.config(state=DISABLED)
+        result = check_software_installed(package_name)
+        print(result)
+        if result != 0:
+            checkbox.config(state=DISABLED)
 
 
     btn_install = tk.Button(root, text="Install", command=lambda: print_checkbox_status(checkboxes, checkbox_var))
