@@ -5,24 +5,13 @@ def check_software_installed(software_name):
     command = f'powershell.exe Get-Package -Name "*{software_name}*"'
     process = subprocess.Popen(command.split(" "), stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     process.communicate()
+    print(process.returncode)
     return process.returncode
 
-
-# chrome
-def install_chrome():
-    # Command to install Chrome with Winget
-    command = ["winget", "install", "-e", "--id", "Google.Chrome"]
-
-    # Execute the command
-    try:
-        subprocess.run(command, check=True)
-    except subprocess.CalledProcessError as e:
-        print(f"Error: {e}")
-
-# vlc
-def install_vlc():
-    # Command to install vlc with Winget
-    command = ["winget", "install", "-e", "--id", "VideoLAN.VLC"]
+# install a software with Winget
+def install_software(software_name):
+    print(software_name)
+    command = ["winget", "install", "-e", "--id", f"{software_name}"]
 
     # Execute the command
     try:
@@ -32,11 +21,9 @@ def install_vlc():
 
 # checkbox value
 def print_checkbox_status (checkboxes, checkbox_var):
-    for checkbox, package_name in checkboxes.items():
+    software_names = ["Google.Chrome", "VideoLAN.VLC"]
+    for index, package_name in zip(software_names, checkboxes.values()):
         if checkbox_var[package_name].get() == 1:
-            if str(checkbox_var[package_name]) == "PY_VAR0":
-                install_chrome()
-            elif str(checkbox_var[package_name]) == "PY_VAR1":
-                install_vlc()
+                install_software(index)
         else:
             print("Please select")

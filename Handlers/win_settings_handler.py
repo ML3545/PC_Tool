@@ -10,8 +10,8 @@ def apply_settings():
     If (!(Test-Path $key_storage -and $key_update)) {
         New-Item -Path $key -Force | Out-Null
     }
-    Set-ItemProperty -Path $key_storage -Name "01" -Value 1 -Type DWord -Force
-    Set-ItemProperty -Path $key_storage -Name "2048" -Value 30 -Type DWord -Force # Set for 30 Days 
+    Set-ItemProperty -Path $key_storage -Name "01" -Value 1 -Type DWord -Force  # Enable storage sense
+    Set-ItemProperty -Path $key_storage -Name "2048" -Value 30 -Type DWord -Force   # Set for 30 Days 
     Set-ItemProperty -Path $key_update -Name "IsContinuousInnovationOptedIn" -Value 1 -Type DWord -Force   # enable get the latest update...  
     Set-ItemProperty -Path $key_update -Name "IsExpedited" -Value 1 -Type DWord -Force    # enable get me up to date 
     
